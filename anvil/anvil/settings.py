@@ -35,7 +35,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'anvildjango',
+    'exercises',
+    'workouts',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',

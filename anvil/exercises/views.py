@@ -3,7 +3,6 @@ from rest_framework.response import Response
 from .models import Exercise
 from .serializers import ExerciseSerializer
 
-
 # GET /exercises/
 @api_view(['GET'])
 def get_all_exercises(request):
@@ -66,6 +65,13 @@ def add_exercise(request):
         return Response(serializer.data)
     return Response(serializer.errors, status=400)
 
+@api_view(['POST'])
+def bulk_create_exercises(request):
+    serializer = ExerciseSerializer(data=request.data, many=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=400)
 
 # DELETE /exercises/{id}/
 @api_view(['DELETE'])

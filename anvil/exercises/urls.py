@@ -16,4 +16,5 @@ urlpatterns = [
     path('delete/by-name/', views.delete_by_name),
     path('delete/by-muscle-group/', views.delete_by_muscle_group),
     path('delete/by-equipment/', views.delete_by_equipment),
+    path('bulk/', views.bulk_create_exercises),
 ]

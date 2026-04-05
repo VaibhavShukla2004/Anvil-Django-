@@ -35,7 +35,7 @@ class Exercise(models.Model):
 
     difficulty = models.CharField(max_length=20, choices=DIFFICULTY_CHOICES)
 
-    image_url = models.URLField()
+    image_url = models.URLField(blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 

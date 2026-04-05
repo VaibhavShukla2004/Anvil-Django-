@@ -1,0 +1,301 @@
+[
+  {
+    "name": "Barbell Bench Press",
+    "primary_muscles": ["chest"],
+    "muscle_weights": {"chest": 1.0, "triceps": 0.4, "front delt": 0.3},
+    "equipment": ["barbell"],
+    "type": "compound",
+    "pattern": "push",
+    "fatigue": 0.8,
+    "difficulty": "intermediate",
+    "image_url": ""
+  },
+  {
+    "name": "Incline Dumbbell Press",
+    "primary_muscles": ["chest"],
+    "muscle_weights": {"chest": 0.9, "front delt": 0.5, "triceps": 0.3},
+    "equipment": ["dumbbell"],
+    "type": "compound",
+    "pattern": "push",
+    "fatigue": 0.7,
+    "difficulty": "intermediate",
+    "image_url": ""
+  },
+  {
+    "name": "Cable Fly",
+    "primary_muscles": ["chest"],
+    "muscle_weights": {"chest": 1.0},
+    "equipment": ["cable"],
+    "type": "isolation",
+    "pattern": "push",
+    "fatigue": 0.4,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Overhead Shoulder Press",
+    "primary_muscles": ["front delt"],
+    "muscle_weights": {"front delt": 1.0, "triceps": 0.5},
+    "equipment": ["barbell"],
+    "type": "compound",
+    "pattern": "push",
+    "fatigue": 0.8,
+    "difficulty": "intermediate",
+    "image_url": ""
+  },
+  {
+    "name": "Front Raise",
+    "primary_muscles": ["front delt"],
+    "muscle_weights": {"front delt": 1.0},
+    "equipment": ["dumbbell"],
+    "type": "isolation",
+    "pattern": "push",
+    "fatigue": 0.4,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Lateral Raise",
+    "primary_muscles": ["side delt"],
+    "muscle_weights": {"side delt": 1.0},
+    "equipment": ["dumbbell"],
+    "type": "isolation",
+    "pattern": "push",
+    "fatigue": 0.4,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+  {
+    "name": "Cable Lateral Raise",
+    "primary_muscles": ["side delt"],
+    "muscle_weights": {"side delt": 1.0},
+    "equipment": ["cable"],
+    "type": "isolation",
+    "pattern": "push",
+    "fatigue": 0.4,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Face Pull",
+    "primary_muscles": ["rear delt"],
+    "muscle_weights": {"rear delt": 1.0, "upper back": 0.5},
+    "equipment": ["cable"],
+    "type": "isolation",
+    "pattern": "pull",
+    "fatigue": 0.5,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+  {
+    "name": "Reverse Pec Deck",
+    "primary_muscles": ["rear delt"],
+    "muscle_weights": {"rear delt": 1.0},
+    "equipment": ["machine"],
+    "type": "isolation",
+    "pattern": "pull",
+    "fatigue": 0.4,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Pull Up",
+    "primary_muscles": ["lats"],
+    "muscle_weights": {"lats": 1.0, "biceps": 0.5},
+    "equipment": ["bar"],
+    "type": "compound",
+    "pattern": "pull",
+    "fatigue": 0.8,
+    "difficulty": "intermediate",
+    "image_url": ""
+  },
+  {
+    "name": "Lat Pulldown",
+    "primary_muscles": ["lats"],
+    "muscle_weights": {"lats": 1.0, "biceps": 0.4},
+    "equipment": ["machine"],
+    "type": "compound",
+    "pattern": "pull",
+    "fatigue": 0.7,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Barbell Row",
+    "primary_muscles": ["upper back"],
+    "muscle_weights": {"upper back": 1.0, "lats": 0.5},
+    "equipment": ["barbell"],
+    "type": "compound",
+    "pattern": "pull",
+    "fatigue": 0.8,
+    "difficulty": "intermediate",
+    "image_url": ""
+  },
+  {
+    "name": "Seated Cable Row",
+    "primary_muscles": ["upper back"],
+    "muscle_weights": {"upper back": 1.0, "lats": 0.5},
+    "equipment": ["cable"],
+    "type": "compound",
+    "pattern": "pull",
+    "fatigue": 0.7,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Barbell Curl",
+    "primary_muscles": ["biceps"],
+    "muscle_weights": {"biceps": 1.0},
+    "equipment": ["barbell"],
+    "type": "isolation",
+    "pattern": "pull",
+    "fatigue": 0.5,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+  {
+    "name": "Hammer Curl",
+    "primary_muscles": ["biceps"],
+    "muscle_weights": {"biceps": 0.7, "forearms": 0.5},
+    "equipment": ["dumbbell"],
+    "type": "isolation",
+    "pattern": "pull",
+    "fatigue": 0.5,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Tricep Pushdown",
+    "primary_muscles": ["triceps"],
+    "muscle_weights": {"triceps": 1.0},
+    "equipment": ["cable"],
+    "type": "isolation",
+    "pattern": "push",
+    "fatigue": 0.4,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+  {
+    "name": "Skull Crushers",
+    "primary_muscles": ["triceps"],
+    "muscle_weights": {"triceps": 1.0},
+    "equipment": ["barbell"],
+    "type": "isolation",
+    "pattern": "push",
+    "fatigue": 0.6,
+    "difficulty": "intermediate",
+    "image_url": ""
+  },
+
+  {
+    "name": "Wrist Curl",
+    "primary_muscles": ["forearms"],
+    "muscle_weights": {"forearms": 1.0},
+    "equipment": ["barbell"],
+    "type": "isolation",
+    "pattern": "pull",
+    "fatigue": 0.3,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Crunch",
+    "primary_muscles": ["upper abs"],
+    "muscle_weights": {"upper abs": 1.0},
+    "equipment": [],
+    "type": "isolation",
+    "pattern": "core",
+    "fatigue": 0.3,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+  {
+    "name": "Leg Raise",
+    "primary_muscles": ["lower abs"],
+    "muscle_weights": {"lower abs": 1.0},
+    "equipment": [],
+    "type": "isolation",
+    "pattern": "core",
+    "fatigue": 0.4,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Squat",
+    "primary_muscles": ["quads"],
+    "muscle_weights": {"quads": 1.0, "glutes": 0.6},
+    "equipment": ["barbell"],
+    "type": "compound",
+    "pattern": "squat",
+    "fatigue": 0.9,
+    "difficulty": "intermediate",
+    "image_url": ""
+  },
+  {
+    "name": "Leg Press",
+    "primary_muscles": ["quads"],
+    "muscle_weights": {"quads": 1.0},
+    "equipment": ["machine"],
+    "type": "compound",
+    "pattern": "squat",
+    "fatigue": 0.8,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Romanian Deadlift",
+    "primary_muscles": ["hamstrings"],
+    "muscle_weights": {"hamstrings": 1.0, "lower back": 0.5},
+    "equipment": ["barbell"],
+    "type": "compound",
+    "pattern": "hinge",
+    "fatigue": 0.8,
+    "difficulty": "intermediate",
+    "image_url": ""
+  },
+  {
+    "name": "Leg Curl",
+    "primary_muscles": ["hamstrings"],
+    "muscle_weights": {"hamstrings": 1.0},
+    "equipment": ["machine"],
+    "type": "isolation",
+    "pattern": "hinge",
+    "fatigue": 0.5,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Calf Raise",
+    "primary_muscles": ["calves"],
+    "muscle_weights": {"calves": 1.0},
+    "equipment": ["machine"],
+    "type": "isolation",
+    "pattern": "push",
+    "fatigue": 0.4,
+    "difficulty": "beginner",
+    "image_url": ""
+  },
+
+  {
+    "name": "Back Extension",
+    "primary_muscles": ["lower back"],
+    "muscle_weights": {"lower back": 1.0},
+    "equipment": ["bodyweight"],
+    "type": "isolation",
+    "pattern": "hinge",
+    "fatigue": 0.5,
+    "difficulty": "beginner",
+    "image_url": ""
+  }
+]

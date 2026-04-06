@@ -166,3 +166,8 @@ def delete_by_equipment(request):
     eq = request.GET.get('equipment')
     count, _ = Exercise.objects.filter(equipment__contains=[eq]).delete()
     return Response({"deleted": count})
+
+from django.shortcuts import render
+
+def exercises_page(request):
+    return render(request, "exercises.html")

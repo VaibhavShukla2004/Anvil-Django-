@@ -1,0 +1,230 @@
+    
+
+        /* 1. Fix: Allow body to scroll vertically but hide horizontal mess */
+        html, body { 
+            margin: 0; padding: 0; width: 100%; min-height: 100%; 
+            background: #000000; overflow-x: hidden; overflow-y: auto;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        
+        #canvas {
+            width: 1920px;
+            height: 1080px;
+            position: relative;
+            background: url('https://images.pexels.com/photos/1954/black-and-white-lights-abstract-curves.jpg') no-repeat center center;
+            background-size: cover;
+            overflow: hidden;
+            /* FIX: Scale from top center so it sits at the top of the page */
+            transform-origin: top center; 
+            flex-shrink: 0;
+        }
+
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('https://db.onlinewebfonts.com/t/6ab539bc7221f0746968079543e34371.woff2') format('woff2');
+        }
+
+        .anvil-logo {
+            position: absolute; width: 192px; height: 70px; left: 60px; top: 22px;
+            font-family: 'Minecraft', sans-serif; font-weight: 500; font-size: 64px; line-height: 70px;
+            color: #ffffff; border: 2px; z-index: 10;
+            cursor: pointer;
+            transition: transform 0.2s ease, text-shadow 0.2s ease;
+        }
+
+        /* Anvil Logo Hover Effect */
+        .anvil-logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .circle-container {
+            position: absolute; width: 800px; height: 800px;
+            left: -550px; top: 131px; display: flex;
+            justify-content: center; align-items: center; z-index: 3;
+        }
+
+        .circle-outer {
+            width: 100%; height: 100%;
+            background: linear-gradient(180deg, #FF4B4B 0%, #270505 100%);
+            border: 3px solid #000000; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 50%; position: absolute;
+            z-index:3;
+        }
+
+        .circle-inner {
+            width: 750px; height: 750px; background: #FFFFFF;
+            border: 1px solid #000000; border-radius: 50%; position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 4;
+            overflow: hidden;
+        }
+
+        .main-card {
+            position: absolute; width: 1550px; height: 800px; left: 300px; top: 128px;
+            /* FIX: Changed alpha to 0.1 so the glass blur is visible */
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(30px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%);
+            border: 4px solid rgba(180, 178, 178, 0.26);
+            border-radius: 39px; z-index: 2;
+            
+        }
+        .side-text{
+        position: absolute; left: 1200px; top: 267px; font-family: 'Minecraft'; font-size: 48px; z-index: 10; color: #ffffff;}
+
+        .start-text {
+            position: absolute; width: 179px; height: 270px; left: 17px; top: 364px;
+            font-family: 'Karantina'; font-weight: 700; font-size: 88.8px; line-height: 90px; color: #000000; z-index: 5;
+        }
+
+        .pookie-text {
+            position: absolute; width: 700px; height: 560; left: 400px; top: 205px;
+            font-family: 'Inter'; font-weight: 900; font-size: 100px; line-height: 110px;
+            background: linear-gradient(0deg, #ff0000 0%, #ffffff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; 
+            z-index: 10; word-spacing: 100vw;
+        }
+
+        .nav-button {
+            box-sizing: border-box; position: absolute; width: 154px; height: 47px;
+            background: rgba(96, 96, 96, 0.074); 
+            backdrop-filter: blur(30px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%);
+            border: 3px solid rgba(255, 255, 255, 0.26);
+            border-radius: 20px; z-index: 2;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, border 0.3s ease;
+        }
+
+        /* Nav Button Hover Effect */
+       
+        .nav-button:hover {
+            transform: scale(1.4); /* Grows slightly */
+            background: rgba(255, 0, 0, 0.3); /* Changes to a transparent RED */
+            border: 2px solid rgba(255, 0, 0, 0.8); /* Border becomes a sharp RED */
+            /* Adds a red glow */
+        }
+
+
+        /* Container for content you add later */
+        .bottom-content {
+            width: 100%; height: 50px; background: #131212; color: white;
+            display: flex; justify-content: center; align-items: center;
+            font-family: 'Inter', sans-serif; font-size: 24px;
+        }
+/* --- ANIMATION STATES --- */
+
+:root {
+    --speed: 2.5s; 
+    /* OPTIONS: 
+       linear (Constant speed)
+       ease-in (Starts slow, ends fast)
+       ease-out (Starts fast, ends slow)
+       ease-in-out (Smooth start AND end) 
+    */
+    --curve: ease-in-out; 
+}
+
+/* Update your base transitions to use the new variable */
+.circle-container, .start-text, .main-card, .pookie-text , .side-text{
+    transition: all var(--speed) var(--curve);
+}
+
+/* --- THE BACK BUTTON --- */
+.back-button {
+    position: absolute;
+    left: 60px;
+    top: -100px; /* Starts off-screen */
+    width: 154px;
+    height: 47px;
+    background: rgba(96, 96, 96, 0.074); 
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(25px) saturate(150%);
+    border: 3px solid rgba(255, 255, 255, 0.26);
+    border-radius: 20px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+    /* Speed controlled by your --speed variable */
+    transition: top var(--speed) var(--curve), 
+                transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                background 0.3s ease;
+}
+
+/* Slide down into position when active */
+.canvas-active .back-button {
+    top: 120px; 
+}
+
+.circle-container {
+    cursor: default; /* Not clickable by default */
+    transition: all var(--speed) var(--curve);
+}
+
+/* When the roll is done, we will add this class via JS */
+.is-centered {
+    cursor: pointer !important;
+}
+
+.is-centered:hover {
+    transform: scale(1.05) rotate(360deg); /* Slight pop on hover */
+}
+
+.back-button:hover {
+    transform: scale(1.4);
+    background: rgba(255, 0, 0, 0.3);
+    border: 2px solid rgba(255, 0, 0, 0.8);
+}
+
+/* Ensure Video fills the container correctly */
+.circle-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    transform: scale(1.5);
+    
+}
+
+.video-ready .circle-video {
+    opacity: 1 !important;
+}
+.video-ready .circle-inner {
+    background: #000 !important;
+}
+/* --- THE ANIMATION TRIGGER --- */
+.canvas-active .circle-container {
+    left: 560px; /* Centered: (1920/2) - (800/2) */
+    transform: rotate(360deg);
+}
+
+.canvas-active .start-text {
+    /* Moves the text to the center of the screen along with the circle */
+    left: 870px; /* Adjust this to center the text perfectly in the white circle */
+    top: 405px;
+    transform: rotate(360deg); /* Optional: make the text spin with the circle */
+    color: #ffffff; /* Change color to match the outer ring when centered */
+}
+
+.canvas-active .main-card {
+    opacity: 0;
+    transform: scale(0.8) translateX(200px); /* Slides away to the right */
+    pointer-events: none;
+}
+
+.canvas-active .pookie-text {
+    opacity: 0;
+    filter: blur(20px);
+}
+.canvas-active .side-text {
+    opacity: 0;
+    filter: blur(20px);
+}

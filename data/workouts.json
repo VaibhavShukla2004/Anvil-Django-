@@ -1,0 +1,161 @@
+[
+  {
+    "name": "Upper Body Balanced",
+    "is_premade": true,
+    "exercise_ids": [1, 4, 9, 13, 15],
+    "muscle_groups": ["chest", "back", "shoulders", "arms"],
+    "equipment": [],
+    "type": "balanced",
+    "total_fatigue": 3.5
+  },
+  {
+    "name": "Upper Body Strength",
+    "is_premade": true,
+    "exercise_ids": [1, 10, 11, 14],
+    "muscle_groups": ["chest", "back", "shoulders"],
+    "equipment": [],
+    "type": "strength",
+    "total_fatigue": 4.2
+  },
+  {
+    "name": "Upper Body Hypertrophy",
+    "is_premade": true,
+    "exercise_ids": [2, 3, 7, 8, 13, 14],
+    "muscle_groups": ["chest", "shoulders", "arms"],
+    "equipment": [],
+    "type": "hypertrophy",
+    "total_fatigue": 3.8
+  },
+
+  {
+    "name": "Lower Body Balanced",
+    "is_premade": true,
+    "exercise_ids": [21, 22, 23, 24, 25],
+    "muscle_groups": ["quads", "hamstrings", "calves"],
+    "equipment": [],
+    "type": "balanced",
+    "total_fatigue": 3.6
+  },
+  {
+    "name": "Lower Body Strength",
+    "is_premade": true,
+    "exercise_ids": [21, 23],
+    "muscle_groups": ["quads", "hamstrings"],
+    "equipment": [],
+    "type": "strength",
+    "total_fatigue": 4.5
+  },
+  {
+    "name": "Lower Body Hypertrophy",
+    "is_premade": true,
+    "exercise_ids": [22, 24, 25],
+    "muscle_groups": ["quads", "hamstrings", "calves"],
+    "equipment": [],
+    "type": "hypertrophy",
+    "total_fatigue": 3.2
+  },
+
+  {
+    "name": "Push Day Balanced",
+    "is_premade": true,
+    "exercise_ids": [1, 4, 6, 15],
+    "muscle_groups": ["chest", "front delt", "triceps"],
+    "equipment": [],
+    "type": "balanced",
+    "total_fatigue": 3.4
+  },
+  {
+    "name": "Push Strength",
+    "is_premade": true,
+    "exercise_ids": [1, 4],
+    "muscle_groups": ["chest", "front delt"],
+    "equipment": [],
+    "type": "strength",
+    "total_fatigue": 4.0
+  },
+  {
+    "name": "Push Hypertrophy",
+    "is_premade": true,
+    "exercise_ids": [2, 3, 6, 15],
+    "muscle_groups": ["chest", "shoulders", "triceps"],
+    "equipment": [],
+    "type": "hypertrophy",
+    "total_fatigue": 3.3
+  },
+
+  {
+    "name": "Pull Day Balanced",
+    "is_premade": true,
+    "exercise_ids": [9, 11, 13, 16],
+    "muscle_groups": ["lats", "upper back", "biceps"],
+    "equipment": [],
+    "type": "balanced",
+    "total_fatigue": 3.5
+  },
+  {
+    "name": "Pull Strength",
+    "is_premade": true,
+    "exercise_ids": [9, 11],
+    "muscle_groups": ["lats", "upper back"],
+    "equipment": [],
+    "type": "strength",
+    "total_fatigue": 4.3
+  },
+  {
+    "name": "Pull Hypertrophy",
+    "is_premade": true,
+    "exercise_ids": [10, 12, 13, 16],
+    "muscle_groups": ["lats", "biceps"],
+    "equipment": [],
+    "type": "hypertrophy",
+    "total_fatigue": 3.4
+  },
+
+  {
+    "name": "Leg Day Balanced",
+    "is_premade": true,
+    "exercise_ids": [21, 22, 23, 24, 25],
+    "muscle_groups": ["quads", "hamstrings", "calves"],
+    "equipment": [],
+    "type": "balanced",
+    "total_fatigue": 3.7
+  },
+  {
+    "name": "Leg Strength",
+    "is_premade": true,
+    "exercise_ids": [21, 23],
+    "muscle_groups": ["quads", "hamstrings"],
+    "equipment": [],
+    "type": "strength",
+    "total_fatigue": 4.6
+  },
+  {
+    "name": "Leg Hypertrophy",
+    "is_premade": true,
+    "exercise_ids": [22, 24, 25],
+    "muscle_groups": ["quads", "hamstrings", "calves"],
+    "equipment": [],
+    "type": "hypertrophy",
+    "total_fatigue": 3.3
+  },
+
+  {
+    "name": "Core Workout",
+    "is_premade": true,
+    "exercise_ids": [18, 19],
+    "muscle_groups": ["upper abs", "lower abs"],
+    "equipment": [],
+    "type": "balanced",
+    "total_fatigue": 2.0
+  },
+
+  {
+    "name": "Cardio Conditioning",
+    "is_premade": true,
+    "exercise_ids": [],
+    "muscle_groups": [],
+    "equipment": [],
+    "type": "balanced",
+    "total_fatigue": 2.5
+  }
+]

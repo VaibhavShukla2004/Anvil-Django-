@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANVIL - Precision Alignment</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Karantina:wght@700&family=VT323&display=swap" rel="stylesheet">
+    
+
+</head>
+<script src="{% static 'js/script.js' %}"></script>
+<body>
+
+<div id="canvas">
+    <div class="anvil-logo" onclick="playAnvilSound()">ANVIL</div>
+
+    <div class="nav-button" style="left: 1100px; top: 22px;"></div>
+    <div class="nav-button" style="left: 1300px; top: 22px;"></div>
+    <div class="nav-button" style="left: 1500px; top: 22px;"></div>
+    <div class="nav-button" style="left: 1700px; top: 22px;"></div>
+
+    <div class="main-card"></div>
+    <div class="back-button" onclick="resetExperience()">BACK</div>
+    <div class="circle-container" id="rollTarget">
+        <div class="circle-outer"></div>
+        <div class="circle-inner">
+            <video id="pookieVideo" class="circle-video" loop muted playsinline style="opacity: 0;">
+                <source src="{% static 'videos/cat1.mp4' %}" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <div class="start-text" 
+     onclick="startExperience()" 
+     style="cursor: pointer; z-index: 20;">
+    LET’S<br>START<br>THIS
+</div>
+    <div class="pookie-text">BE READY TO ACHIEVE SOMETHING, POOKIE.</div>
+
+    <div class="side-text">blahblah<br>bolha<br>blkoha<br>blah</div>
+    
+</div>
+
+<div class="bottom-content">
+    Scroll down for more workout details...
+</div>
+
+
+</body>
+</html>

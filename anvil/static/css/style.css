@@ -74,7 +74,7 @@
 
         .start-text {
             position: absolute; width: 179px; height: 270px; left: 17px; top: 364px;
-            font-family: 'Karantina'; font-weight: 700; font-size: 88.8px; line-height: 90px; color: #000000; z-index: 5;
+            font-family: 'Karantina'; font-weight: 700; font-size: 88.8px; line-height: 90px; color: #000000; z-index: 100;
         }
 
         .pookie-text {
@@ -188,6 +188,7 @@
     object-fit: cover;
     border-radius: 50%;
     opacity: 0;
+    z-index: 1;
     pointer-events: none;
     transition: opacity 0.5s ease;
     transform: scale(1.5);
@@ -210,9 +211,11 @@
     /* Moves the text to the center of the screen along with the circle */
     left: 870px; /* Adjust this to center the text perfectly in the white circle */
     top: 405px;
+    z-index: -1;
     transform: rotate(360deg); /* Optional: make the text spin with the circle */
     color: #ffffff; /* Change color to match the outer ring when centered */
 }
+
 
 .canvas-active .main-card {
     opacity: 0;
@@ -227,4 +230,204 @@
 .canvas-active .side-text {
     opacity: 0;
     filter: blur(20px);
+}
+
+
+.exercise-grid-scroll, .workout-grid-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    overflow-y: auto; /* This allows scrolling inside the glass card */
+    max-height: 750px; /* Adjust this so it fits inside your main-card */
+    padding: 20px;
+}
+
+/* Individual Exercise Card */
+.exercise-card {
+    background: rgba(255, 255, 255, 0.05); /* Slight glass look */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.exercise-card:hover {
+    transform: translateY(-10px);
+    border-color: #FF4B4B; /* Matches your red theme */
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.card-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-content {
+    padding: 15px;
+    font-family: 'Inter', sans-serif;
+}
+
+.exercise-name {
+    font-family: 'Minecraft', sans-serif;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    color: #fff;
+}
+
+.tag {
+    background: rgba(255, 75, 75, 0.2);
+    color: #FF4B4B;
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.workout-name {
+    font-family: 'Minecraft', sans-serif;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    color: #fff;
+}
+.exercise-grid-scroll {
+    display: grid !important; /* Force grid display */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    width: 100%;
+    height: 650px; /* Give it a fixed height inside the glass card */
+    overflow-y: auto; /* Enable scrolling */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.exercise-card {
+    min-height: 300px; /* Ensure cards have height */
+    background: rgba(255, 255, 255, 0.1) !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.main-display-card {
+            position: absolute; width: 1850px; height: 800px; left: 35px; top: 128px;
+            /* FIX: Changed alpha to 0.1 so the glass blur is visible */
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(30px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%);
+            border: 4px solid rgba(180, 178, 178, 0.26);
+            border-radius: 39px; z-index: 2;
+            
+        }
+
+
+/* Individual workout Card */
+.workout-card {
+    background: rgba(255, 255, 255, 0.05); /* Slight glass look */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.workout-card:hover {
+    transform: translateY(-10px);
+    border-color: #FF4B4B; /* Matches your red theme */
+    background: rgba(255, 0, 0, 0.1);
+}
+
+
+
+/* Selection Page Specifics */
+.selection-canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 1920px; /* Matching your canvas width */
+    height: 1080px; /* Matching your canvas height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.side-circle {
+    position: absolute;
+    width: 800px; /* Increased to match your original circle size */
+    height: 800px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #FF4B4B 0%, #270505 100%);
+    border: 4px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncy transition */
+    z-index: 5;
+}
+
+/* Positioning for the 3 states */
+.side-circle.left {
+    left: -400px; /* Half hidden on the left */
+    transform: scale(0.7);
+    opacity: 0.4;
+    pointer-events: none; /* Only center circle should be interactive */
+}
+
+.side-circle.center {
+    left: 560px; /* Centered exactly: (1920 - 800) / 2 */
+    transform: scale(1);
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 0px 0px 50px rgba(255, 75, 75, 0.5);
+}
+
+.side-circle.right {
+    left: 1520px; /* Half hidden on the right: 1920 - 400 */
+    transform: scale(0.7);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.circle-content {
+    font-family: 'Karantina', sans-serif;
+    font-size: 120px; /* Larger text for the 800px circles */
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* Arrow Navigation */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 3px solid #fff;
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.slider-arrow:hover {
+    background: rgba(255, 75, 75, 0.3);
+    transform: translateY(-50%) rotate(45deg) scale(1.2);
+}
+
+.left-arrow { 
+    left: 100px; 
+    transform: translateY(-50%) rotate(45deg);
+    border-right: none; 
+    border-top: none; 
+}
+
+.right-arrow { 
+    right: 100px; 
+    transform: translateY(-50%) rotate(45deg);
+    border-left: none; 
+    border-bottom: none; 
 }

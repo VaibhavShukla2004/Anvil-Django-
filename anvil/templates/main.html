@@ -16,21 +16,28 @@
 <div id="canvas">
     <div class="anvil-logo" onclick="playAnvilSound()">ANVIL</div>
 
-    <div class="nav-button" style="left: 1100px; top: 22px;"></div>
-    <div class="nav-button" style="left: 1300px; top: 22px;"></div>
-    <div class="nav-button" style="left: 1500px; top: 22px;"></div>
-    <div class="nav-button" style="left: 1700px; top: 22px;"></div>
+    <div class="nav-button" style="left: 1100px; top: 22px;">
+        <a href="{% url 'exercise:page' %}">EXERCISES</a>
+    </div>
+    <div class="nav-button" style="left: 1300px; top: 22px;">
+        <a href="{% url 'workout:page' %}">WORKOUTS</a>
+    </div>
+    <div class="nav-button" style="left: 1500px; top: 22px;">MEALS</div>
+    <div class="nav-button" style="left: 1700px; top: 22px;">PROGRAMMES</div>
 
     <div class="main-card"></div>
     <div class="back-button" onclick="resetExperience()">BACK</div>
     <div class="circle-container" id="rollTarget">
-        <div class="circle-outer"></div>
-        <div class="circle-inner">
-            <video id="pookieVideo" class="circle-video" loop muted playsinline style="opacity: 0;">
-                <source src="{% static 'videos/cat1.mp4' %}" type="video/mp4">
-            </video>
+    <div class="circle-outer"></div>
+    <div class="circle-inner">
+        <video id="pookieVideo" class="circle-video" loop muted playsinline>
+            <source src="{% static 'videos/cat1.mp4' %}" type="video/mp4">
+        </video>
+        <div class="start-text-inside" onclick="startExperience()">
+            LET’S<br>START<br>THIS
         </div>
     </div>
+</div>
 
     <div class="start-text" 
      onclick="startExperience()" 

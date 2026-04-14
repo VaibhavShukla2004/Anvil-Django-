@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANVIL - Selection</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="canvas" class="selection-canvas">
+    <div class="anvil-logo" onclick="window.location.href='/'">ANVIL</div>
+
+    <div class="slider-wrapper">
+        <div class="side-circle left" id="circleLeft">
+            <div class="circle-content">DIET</div>
+        </div>
+
+        <div class="side-circle center" id="circleCenter">
+            <div class="circle-content">WORKOUT</div>
+        </div>
+
+        <div class="side-circle right" id="circleRight">
+            <div class="circle-content">GOALS</div>
+        </div>
+    </div>
+
+    <div class="slider-arrow left-arrow" onclick="moveSlider('left')"></div>
+    <div class="slider-arrow right-arrow" onclick="moveSlider('right')"></div>
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

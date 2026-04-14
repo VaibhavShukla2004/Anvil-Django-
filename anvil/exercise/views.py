@@ -168,6 +168,7 @@ def delete_by_equipment(request):
     return Response({"deleted": count})
 
 from django.shortcuts import render
-
 def exercises_page(request):
-    return render(request, "exercises.html")
+    """Renders the HTML template for the exercises list"""
+    return render(request, "exercises_page.html")
+

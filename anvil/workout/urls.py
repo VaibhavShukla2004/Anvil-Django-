@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+app_name = 'workout'
 urlpatterns = [
     # GET
     path('', views.get_all_workouts),
@@ -22,4 +23,6 @@ urlpatterns = [
     path('premade/add-bulk/', views.create_premade_workout_bulk),
     path('premade/update/<uuid:id>/', views.update_premade_workout),
     path('premade/delete/', views.delete_premade_workouts),
+
+    path('workouts_page/', views.workouts_page, name='page'),
 ]

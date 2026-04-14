@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANVIL - Exercise Library</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Karantina:wght@700&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="canvas">
+    <div class="anvil-logo" onclick="window.location.href='{% url 'home' %}'">ANVIL</div>
+
+    <div class="main-card" style="display: flex; flex-direction: column; padding: 40px; box-sizing: border-box;">
+        <h1 style="font-family: 'Minecraft'; color: #fff; margin-bottom: 20px;">DATABASE_ACCESS: EXERCISES</h1>
+        
+        <div id="WorkoutContainer" class="workout-grid-scroll">
+            <p style="color: #fff; font-family: 'VT323';">RETRIVING_DATA...</p>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

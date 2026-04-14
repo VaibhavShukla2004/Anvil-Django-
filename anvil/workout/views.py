@@ -316,3 +316,7 @@ def update_premade_workout(request, id):
 
     return Response(serializer.errors, status=400)
 
+from django.shortcuts import render
+def workouts_page(request):
+    """Renders the HTML template for the workouts list"""
+    return render(request, "workouts_page.html")

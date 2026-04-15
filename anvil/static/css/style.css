@@ -1,433 +1,1144 @@
-    
+    /* 1. Fix: Allow body to scroll vertically but hide horizontal mess */
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+        background: #000000;
+        overflow-x: hidden;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-        /* 1. Fix: Allow body to scroll vertically but hide horizontal mess */
-        html, body { 
-            margin: 0; padding: 0; width: 100%; min-height: 100%; 
-            background: #000000; overflow-x: hidden; overflow-y: auto;
-            display: flex; flex-direction: column; align-items: center;
-        }
-        
-        #canvas {
-            width: 1920px;
-            height: 1080px;
-            position: relative;
-            background: url('https://images.pexels.com/photos/1954/black-and-white-lights-abstract-curves.jpg') no-repeat center center;
-            background-size: cover;
-            overflow: hidden;
-            /* FIX: Scale from top center so it sits at the top of the page */
-            transform-origin: top center; 
-            flex-shrink: 0;
-        }
+    #canvas {
+        width: 1920px;
+        height: 1080px;
+        position: relative;
+        background: url('https://images.pexels.com/photos/1954/black-and-white-lights-abstract-curves.jpg') no-repeat center center;
+        background-size: cover;
+        overflow: hidden;
+        /* FIX: Scale from top center so it sits at the top of the page */
+        transform-origin: top center;
+        flex-shrink: 0;
+    }
 
-        @font-face {
-            font-family: 'Minecraft';
-            src: url('https://db.onlinewebfonts.com/t/6ab539bc7221f0746968079543e34371.woff2') format('woff2');
-        }
+    @font-face {
+        font-family: 'Minecraft';
+        src: url('https://db.onlinewebfonts.com/t/6ab539bc7221f0746968079543e34371.woff2') format('woff2');
+    }
 
-        .anvil-logo {
-            position: absolute; width: 192px; height: 70px; left: 60px; top: 22px;
-            font-family: 'Minecraft', sans-serif; font-weight: 500; font-size: 64px; line-height: 70px;
-            color: #ffffff; border: 2px; z-index: 10;
-            cursor: pointer;
-            transition: transform 0.2s ease, text-shadow 0.2s ease;
-        }
+    .anvil-logo {
+        position: absolute;
+        width: 192px;
+        height: 70px;
+        left: 60px;
+        top: 22px;
+        font-family: 'Minecraft', sans-serif;
+        font-weight: 500;
+        font-size: 64px;
+        line-height: 70px;
+        color: #ffffff;
+        border: 2px;
+        z-index: 10;
+        cursor: pointer;
+        transition: transform 0.2s ease, text-shadow 0.2s ease;
+    }
 
-        /* Anvil Logo Hover Effect */
-        .anvil-logo:hover {
-            transform: scale(1.05);
-            text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
-        }
+    /* Anvil Logo Hover Effect */
+    .anvil-logo:hover {
+        transform: scale(1.05);
+        text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+    }
 
-        .circle-container {
-            position: absolute; width: 800px; height: 800px;
-            left: -550px; top: 131px; display: flex;
-            justify-content: center; align-items: center; z-index: 3;
-        }
+    .circle-container {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        left: -550px;
+        top: 131px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 3;
+    }
 
-        .circle-outer {
-            width: 100%; height: 100%;
-            background: linear-gradient(180deg, #FF4B4B 0%, #270505 100%);
-            border: 3px solid #000000; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 50%; position: absolute;
-            z-index:3;
-        }
+    .circle-outer {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #FF4B4B 0%, #270505 100%);
+        border: 3px solid #000000;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 3;
+    }
 
-        .circle-inner {
-            width: 750px; height: 750px; background: #FFFFFF;
-            border: 1px solid #000000; border-radius: 50%; position: absolute;
-            top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 4;
-            overflow: hidden;
-        }
+    .circle-inner {
+        width: 750px;
+        height: 750px;
+        background: #FFFFFF;
+        border: 1px solid #000000;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 4;
+        overflow: hidden;
+    }
 
-        .main-card {
-            position: absolute; width: 1550px; height: 800px; left: 300px; top: 128px;
-            /* FIX: Changed alpha to 0.1 so the glass blur is visible */
-            background: rgba(255, 255, 255, 0.02); 
-            backdrop-filter: blur(30px) saturate(150%);
-            -webkit-backdrop-filter: blur(25px) saturate(150%);
-            border: 4px solid rgba(180, 178, 178, 0.26);
-            border-radius: 39px; z-index: 2;
-            
-        }
-        .side-text{
-        position: absolute; left: 1200px; top: 267px; font-family: 'Minecraft'; font-size: 48px; z-index: 10; color: #ffffff;}
+    .main-card {
+        position: absolute;
+        width: 1550px;
+        height: 800px;
+        left: 300px;
+        top: 128px;
+        /* FIX: Changed alpha to 0.1 so the glass blur is visible */
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(30px) saturate(150%);
+        -webkit-backdrop-filter: blur(25px) saturate(150%);
+        border: 4px solid rgba(180, 178, 178, 0.26);
+        border-radius: 39px;
+        z-index: 2;
 
-        .start-text {
-            position: absolute; width: 179px; height: 270px; left: 17px; top: 364px;
-            font-family: 'Karantina'; font-weight: 700; font-size: 88.8px; line-height: 90px; color: #000000; z-index: 100;
-        }
+    }
 
-        .pookie-text {
-            position: absolute; width: 700px; height: 560; left: 400px; top: 205px;
-            font-family: 'Inter'; font-weight: 900; font-size: 100px; line-height: 110px;
-            background: linear-gradient(0deg, #ff0000 0%, #ffffff 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; 
-            z-index: 10; word-spacing: 100vw;
-        }
+    .side-text {
+        position: absolute;
+        left: 1200px;
+        top: 267px;
+        font-family: 'Minecraft';
+        font-size: 48px;
+        z-index: 10;
+        color: #ffffff;
+    }
 
-        .nav-button {
-            box-sizing: border-box; position: absolute; width: 154px; height: 47px;
-            background: rgba(96, 96, 96, 0.074); 
-            backdrop-filter: blur(30px) saturate(150%);
-            -webkit-backdrop-filter: blur(25px) saturate(150%);
-            border: 3px solid rgba(255, 255, 255, 0.26);
-            border-radius: 20px; z-index: 2;
-            cursor: pointer;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, border 0.3s ease;
-        }
+    .start-text {
+        position: absolute;
+        width: 179px;
+        height: 270px;
+        left: 17px;
+        top: 364px;
+        font-family: 'Karantina';
+        font-weight: 700;
+        font-size: 88.8px;
+        line-height: 90px;
+        color: #000000;
+        z-index: 100;
+    }
 
-        /* Nav Button Hover Effect */
-       
-        .nav-button:hover {
-            transform: scale(1.4); /* Grows slightly */
-            background: rgba(255, 0, 0, 0.3); /* Changes to a transparent RED */
-            border: 2px solid rgba(255, 0, 0, 0.8); /* Border becomes a sharp RED */
-            /* Adds a red glow */
-        }
+    .pookie-text {
+        position: absolute;
+        width: 700px;
+        height: 560;
+        left: 400px;
+        top: 205px;
+        font-family: 'Inter';
+        font-weight: 900;
+        font-size: 100px;
+        line-height: 110px;
+        background: linear-gradient(0deg, #ff0000 0%, #ffffff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        z-index: 10;
+        word-spacing: 100vw;
+    }
+
+    .nav-button {
+        box-sizing: border-box;
+        position: absolute;
+        width: 154px;
+        height: 47px;
+        background: rgba(96, 96, 96, 0.074);
+        backdrop-filter: blur(30px) saturate(150%);
+        -webkit-backdrop-filter: blur(25px) saturate(150%);
+        border: 3px solid rgba(255, 255, 255, 0.26);
+        border-radius: 20px;
+        z-index: 2;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, border 0.3s ease;
+    }
+
+    .nav-button a,
+    .nav-button {
+        font-family: 'Karantina', sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        color: #ffffff;
+        text-decoration: none;
+        letter-spacing: 1px;
+        line-height: 1;
+    }
+
+    /* Nav Button Hover Effect */
+
+    .nav-button:hover {
+        transform: scale(1.4);
+        /* Grows slightly */
+        background: rgba(255, 0, 0, 0.3);
+        /* Changes to a transparent RED */
+        border: 2px solid rgba(255, 0, 0, 0.8);
+        /* Border becomes a sharp RED */
+        /* Adds a red glow */
+    }
 
 
-        /* Container for content you add later */
-        .bottom-content {
-            width: 100%; height: 50px; background: #131212; color: white;
-            display: flex; justify-content: center; align-items: center;
-            font-family: 'Inter', sans-serif; font-size: 24px;
-        }
-/* --- ANIMATION STATES --- */
+    /* Container for bottom bar */
+    .bottom-content {
+        width: 100%;
+        min-height: 110px;
+        background: #d4d4d4;
+        color: #444444;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 80px;
+        box-sizing: border-box;
+        font-family: 'Karantina', sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        gap: 40px;
+    }
 
-:root {
-    --speed: 2.5s; 
-    /* OPTIONS: 
+    .meet-devs-text {
+        color: #333333;
+        font-family: 'Karantina', sans-serif;
+        font-weight: 700;
+        font-size: 42px;
+        letter-spacing: 3px;
+        line-height: 1.1;
+        white-space: nowrap;
+    }
+
+    .meet-devs-text span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 4px;
+        color: #666666;
+        text-transform: uppercase;
+    }
+
+    .bottom-badge-img {
+        height: 120px;
+        width: 180px;
+        object-fit: contain;
+        opacity: 0.85;
+    }
+
+    .forgot-pwd-link {
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        color: rgba(255, 75, 75, 0.8);
+        text-align: right;
+        cursor: pointer;
+        margin-top: -10px;
+        text-decoration: underline;
+    }
+
+    .forgot-pwd-link:hover {
+        color: #FF4B4B;
+    }
+
+    /* --- ANIMATION STATES --- */
+
+    :root {
+        --speed: 2.5s;
+        /* OPTIONS: 
        linear (Constant speed)
        ease-in (Starts slow, ends fast)
        ease-out (Starts fast, ends slow)
        ease-in-out (Smooth start AND end) 
     */
-    --curve: ease-in-out; 
-}
+        --curve: ease-in-out;
+    }
 
-/* Update your base transitions to use the new variable */
-.circle-container, .start-text, .main-card, .pookie-text , .side-text{
-    transition: all var(--speed) var(--curve);
-}
+    /* Update your base transitions to use the new variable */
+    .circle-container,
+    .start-text,
+    .main-card,
+    .pookie-text,
+    .side-text {
+        transition: all var(--speed) var(--curve);
+    }
 
-/* --- THE BACK BUTTON --- */
-.back-button {
-    position: absolute;
-    left: 60px;
-    top: -100px; /* Starts off-screen */
-    width: 154px;
-    height: 47px;
-    background: rgba(96, 96, 96, 0.074); 
-    backdrop-filter: blur(30px) saturate(150%);
-    -webkit-backdrop-filter: blur(25px) saturate(150%);
-    border: 3px solid rgba(255, 255, 255, 0.26);
-    border-radius: 20px;
-    color: white;
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 100;
-    /* Speed controlled by your --speed variable */
-    transition: top var(--speed) var(--curve), 
-                transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                background 0.3s ease;
-}
+    /* --- THE BACK BUTTON --- */
+    .back-button {
+        position: absolute;
+        left: 60px;
+        top: -100px;
+        /* Starts off-screen */
+        width: 154px;
+        height: 47px;
+        background: rgba(96, 96, 96, 0.074);
+        backdrop-filter: blur(30px) saturate(150%);
+        -webkit-backdrop-filter: blur(25px) saturate(150%);
+        border: 3px solid rgba(255, 255, 255, 0.26);
+        border-radius: 20px;
+        color: white;
+        font-family: 'Karantina', sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: 1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 100;
+        /* Speed controlled by your --speed variable */
+        transition: top var(--speed) var(--curve),
+            transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+            background 0.3s ease;
+    }
 
-/* Slide down into position when active */
-.canvas-active .back-button {
-    top: 120px; 
-}
+    /* Slide down into position when active */
+    .canvas-active .back-button {
+        top: 120px;
+    }
 
-.circle-container {
-    cursor: default; /* Not clickable by default */
-    transition: all var(--speed) var(--curve);
-}
+    .circle-container {
+        cursor: default;
+        /* Not clickable by default */
+        transition: all var(--speed) var(--curve);
+    }
 
-/* When the roll is done, we will add this class via JS */
-.is-centered {
-    cursor: pointer !important;
-}
+    /* When the roll is done, we will add this class via JS */
+    .is-centered {
+        cursor: pointer !important;
+    }
 
-.is-centered:hover {
-    transform: scale(1.05) rotate(360deg); /* Slight pop on hover */
-}
+    .is-centered:hover {
+        transform: scale(1.05) rotate(360deg);
+        /* Slight pop on hover */
+    }
 
-.back-button:hover {
-    transform: scale(1.4);
-    background: rgba(255, 0, 0, 0.3);
-    border: 2px solid rgba(255, 0, 0, 0.8);
-}
+    .back-button:hover {
+        transform: scale(1.4);
+        background: rgba(255, 0, 0, 0.3);
+        border: 2px solid rgba(255, 0, 0, 0.8);
+    }
 
-/* Ensure Video fills the container correctly */
-.circle-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    opacity: 0;
-    z-index: 1;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-    transform: scale(1.5);
+    /* Ensure Video fills the container correctly */
+    .circle-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        opacity: 0;
+        z-index: 1;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+        transform: scale(1.5);
+
+    }
+
+    .video-ready .circle-video {
+        opacity: 1 !important;
+    }
+
+    .video-ready .circle-inner {
+        background: #000 !important;
+    }
+
+    /* --- THE ANIMATION TRIGGER --- */
+    .canvas-active .circle-container {
+        left: 560px;
+        /* Centered: (1920/2) - (800/2) */
+        transform: rotate(360deg);
+    }
+
+    .canvas-active .start-text {
+        /* Moves the text to the center of the screen along with the circle */
+        left: 870px;
+        /* Adjust this to center the text perfectly in the white circle */
+        top: 405px;
+        z-index: -1;
+        transform: rotate(360deg);
+        /* Optional: make the text spin with the circle */
+        color: #ffffff;
+        /* Change color to match the outer ring when centered */
+    }
+
+
+    .canvas-active .main-card {
+        opacity: 0;
+        transform: scale(0.8) translateX(200px);
+        /* Slides away to the right */
+        pointer-events: none;
+    }
+
+    /* pookie-text stays visible during the roll animation */
+
+    /* Pookie text fades out when the circle rolls in */
+    .canvas-active .pookie-text {
+        opacity: 0;
+        filter: blur(20px);
+    }
+
+
+    .exercise-grid-scroll,
+    .workout-grid-scroll {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+        overflow-y: auto;
+        /* This allows scrolling inside the glass card */
+        max-height: 750px;
+        /* Adjust this so it fits inside your main-card */
+        padding: 20px;
+    }
+
+    /* Individual Exercise Card */
+    .exercise-card {
+        background: rgba(255, 255, 255, 0.05);
+        /* Slight glass look */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .exercise-card:hover {
+        transform: translateY(-10px);
+        border-color: #FF4B4B;
+        /* Matches your red theme */
+        background: rgba(255, 0, 0, 0.1);
+    }
+
+    .card-image img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card-content {
+        padding: 15px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .exercise-name {
+        font-family: 'Minecraft', sans-serif;
+        font-size: 18px;
+        margin: 0 0 10px 0;
+        color: #fff;
+    }
+
+    .tag {
+        background: rgba(255, 75, 75, 0.2);
+        color: #FF4B4B;
+        padding: 2px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    .workout-name {
+        font-family: 'Minecraft', sans-serif;
+        font-size: 18px;
+        margin: 0 0 10px 0;
+        color: #fff;
+    }
+
+    .exercise-grid-scroll, .workout-grid-scroll {
+        display: grid !important;
+        /* Force grid display */
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-auto-rows: max-content;
+        align-items: start;
+        gap: 25px;
+        width: 100%;
+        height: 650px;
+        /* Give it a fixed height inside the glass card */
+        overflow-y: auto;
+        /* Enable scrolling */
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .exercise-card, .workout-card {
+        min-height: 300px;
+        /* Ensure cards have height */
+        background: rgba(255, 255, 255, 0.1) !important;
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    .main-display-card {
+        position: absolute;
+        width: 1850px;
+        height: 800px;
+        left: 35px;
+        top: 128px;
+        /* FIX: Changed alpha to 0.1 so the glass blur is visible */
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(30px) saturate(150%);
+        -webkit-backdrop-filter: blur(25px) saturate(150%);
+        border: 4px solid rgba(180, 178, 178, 0.26);
+        border-radius: 39px;
+        z-index: 2;
+
+    }
+
+
+    /* Individual workout Card */
+    .workout-card {
+        background: rgba(255, 255, 255, 0.05); /* Slight glass look */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .workout-card:hover {
+        transform: translateY(-10px);
+        border-color: #FF4B4B; /* Matches your red theme */
+        background: rgba(255, 0, 0, 0.1);
+    }
+
+
+
+    /* Selection Page Specifics */
+    .selection-canvas {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .slider-wrapper {
+        position: relative;
+        width: 1920px;
+        /* Matching your canvas width */
+        height: 1080px;
+        /* Matching your canvas height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .side-circle {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: linear-gradient(180deg, #FF4B4B 0%, #270505 100%);
+        border: 4px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 5;
+        overflow: hidden;
+    }
+
+    /* Diet circle — dark blue */
+    .side-circle.circle-diet {
+        background: linear-gradient(180deg, #4B8BFF 0%, #050F27 100%);
+    }
     
-}
+    /* Goals circle — rich purple */
+    .side-circle.circle-goals {
+        background: linear-gradient(180deg, #A855F7 0%, #1A0533 100%);
+    }
 
-.video-ready .circle-video {
-    opacity: 1 !important;
-}
-.video-ready .circle-inner {
-    background: #000 !important;
-}
-/* --- THE ANIMATION TRIGGER --- */
-.canvas-active .circle-container {
-    left: 560px; /* Centered: (1920/2) - (800/2) */
-    transform: rotate(360deg);
-}
+    /* Positioning for the 3 states */
+    .side-circle.left {
+        left: -400px;
+        transform: scale(0.7);
+        opacity: 0.4;
+        pointer-events: none;
+    }
 
-.canvas-active .start-text {
-    /* Moves the text to the center of the screen along with the circle */
-    left: 870px; /* Adjust this to center the text perfectly in the white circle */
-    top: 405px;
-    z-index: -1;
-    transform: rotate(360deg); /* Optional: make the text spin with the circle */
-    color: #ffffff; /* Change color to match the outer ring when centered */
-}
+    .side-circle.center {
+        left: 560px;
+        transform: scale(1);
+        opacity: 1;
+        z-index: 10;
+        box-shadow: 0px 0px 50px rgba(255, 75, 75, 0.5);
+    }
 
+    /* Override glow tint for non-red center states */
+    .side-circle.circle-diet.center {
+        box-shadow: 0px 0px 50px rgba(75, 139, 255, 0.5);
+    }
+    .side-circle.circle-goals.center {
+        box-shadow: 0px 0px 50px rgba(168, 85, 247, 0.5);
+    }
 
-.canvas-active .main-card {
-    opacity: 0;
-    transform: scale(0.8) translateX(200px); /* Slides away to the right */
-    pointer-events: none;
-}
+    .side-circle.right {
+        left: 1520px;
+        transform: scale(0.7);
+        opacity: 0.4;
+        pointer-events: none;
+    }
 
-.canvas-active .pookie-text {
-    opacity: 0;
-    filter: blur(20px);
-}
-.canvas-active .side-text {
-    opacity: 0;
-    filter: blur(20px);
-}
+    .circle-content {
+        font-family: 'Karantina', sans-serif;
+        font-size: 120px;
+        /* Larger text for the 800px circles */
+        color: #fff;
+        text-transform: uppercase;
+    }
 
+    /* Arrow Navigation */
+    .slider-arrow {
+        position: absolute;
+        top: 50%;
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 3px solid #fff;
+        cursor: pointer;
+        z-index: 100;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
 
-.exercise-grid-scroll, .workout-grid-scroll {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-    overflow-y: auto; /* This allows scrolling inside the glass card */
-    max-height: 750px; /* Adjust this so it fits inside your main-card */
-    padding: 20px;
-}
+    .slider-arrow:hover {
+        background: rgba(255, 75, 75, 0.3);
+        transform: translateY(-50%) rotate(45deg) scale(1.2);
+    }
 
-/* Individual Exercise Card */
-.exercise-card {
-    background: rgba(255, 255, 255, 0.05); /* Slight glass look */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
+    .left-arrow {
+        left: 100px;
+        transform: translateY(-50%) rotate(45deg);
+        border-right: none;
+        border-top: none;
+    }
 
-.exercise-card:hover {
-    transform: translateY(-10px);
-    border-color: #FF4B4B; /* Matches your red theme */
-    background: rgba(255, 0, 0, 0.1);
-}
+    .right-arrow {
+        right: 100px;
+        transform: translateY(-50%) rotate(45deg);
+        border-left: none;
+        border-bottom: none;
+    }
 
-.card-image img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+    /* ============================================================
+   AUTH PANEL — Login / Register / Account
+   Positioned on the left side of the main-card
+   ============================================================ */
 
-.card-content {
-    padding: 15px;
-    font-family: 'Inter', sans-serif;
-}
+    .auth-panel {
+        position: absolute;
+        left: 1130px;
+        top: 148px;
+        width: 690px;
+        height: 760px;
+        background: none;
+        border: 1.5px solid rgba(255, 75, 75, 0.30);
+        border-radius: 32px;
+        padding: 50px 52px;
+        z-index: 15;
+        transition: opacity var(--speed) var(--curve),
+            transform var(--speed) var(--curve);
+        box-sizing: border-box;
+    }
 
-.exercise-name {
-    font-family: 'Minecraft', sans-serif;
-    font-size: 18px;
-    margin: 0 0 10px 0;
-    color: #fff;
-}
+    /* Hide the panel when the experience starts */
+    .canvas-active .auth-panel {
+        opacity: 0;
+        transform: scale(0.9) translateX(-40px);
+        pointer-events: none;
+    }
 
-.tag {
-    background: rgba(255, 75, 75, 0.2);
-    color: #FF4B4B;
-    padding: 2px 8px;
-    border-radius: 5px;
-    font-size: 12px;
-    margin-right: 5px;
-}
+    /* ---------- Tabs ---------- */
+    .auth-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 36px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 18px;
+        padding: 6px;
+    }
 
-.workout-name {
-    font-family: 'Minecraft', sans-serif;
-    font-size: 18px;
-    margin: 0 0 10px 0;
-    color: #fff;
-}
-.exercise-grid-scroll {
-    display: grid !important; /* Force grid display */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-    width: 100%;
-    height: 650px; /* Give it a fixed height inside the glass card */
-    overflow-y: auto; /* Enable scrolling */
-    padding: 20px;
-    box-sizing: border-box;
-}
+    .auth-tab {
+        flex: 1;
+        padding: 14px 0;
+        border: none;
+        border-radius: 13px;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.4);
+        font-family: 'Minecraft', sans-serif;
+        font-size: 16px;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+    }
 
-.exercise-card {
-    min-height: 300px; /* Ensure cards have height */
-    background: rgba(255, 255, 255, 0.1) !important;
-    display: block !important;
-    visibility: visible !important;
-}
+    .auth-tab.active {
+        background: linear-gradient(135deg, #FF4B4B, #c01a1a);
+        color: #ffffff;
+        box-shadow: 0 0 18px rgba(255, 75, 75, 0.45);
+    }
 
-.main-display-card {
-            position: absolute; width: 1850px; height: 800px; left: 35px; top: 128px;
-            /* FIX: Changed alpha to 0.1 so the glass blur is visible */
-            background: rgba(255, 255, 255, 0.02); 
-            backdrop-filter: blur(30px) saturate(150%);
-            -webkit-backdrop-filter: blur(25px) saturate(150%);
-            border: 4px solid rgba(180, 178, 178, 0.26);
-            border-radius: 39px; z-index: 2;
-            
-        }
+    .auth-tab:not(.active):hover {
+        background: rgba(255, 255, 255, 0.07);
+        color: rgba(255, 255, 255, 0.8);
+    }
 
+    /* ---------- Forms ---------- */
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
 
-/* Individual workout Card */
-.workout-card {
-    background: rgba(255, 255, 255, 0.05); /* Slight glass look */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
+    .auth-form.hidden {
+        display: none;
+    }
 
-.workout-card:hover {
-    transform: translateY(-10px);
-    border-color: #FF4B4B; /* Matches your red theme */
-    background: rgba(255, 0, 0, 0.1);
-}
+    .auth-field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
 
+    .auth-field label {
+        font-family: 'Minecraft', sans-serif;
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: rgba(255, 75, 75, 0.8);
+    }
 
+    .auth-field input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1.5px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 14px 18px;
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        outline: none;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-/* Selection Page Specifics */
-.selection-canvas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
+    .auth-field input::placeholder {
+        color: rgba(255, 255, 255, 0.2);
+    }
 
-.slider-wrapper {
-    position: relative;
-    width: 1920px; /* Matching your canvas width */
-    height: 1080px; /* Matching your canvas height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .auth-field input:focus {
+        border-color: rgba(255, 75, 75, 0.7);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 0 12px rgba(255, 75, 75, 0.2);
+    }
 
-.side-circle {
-    position: absolute;
-    width: 800px; /* Increased to match your original circle size */
-    height: 800px;
-    border-radius: 50%;
-    background: linear-gradient(180deg, #FF4B4B 0%, #270505 100%);
-    border: 4px solid #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncy transition */
-    z-index: 5;
-}
+    /* ---------- Messages ---------- */
+    .auth-message {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        min-height: 16px;
+        text-align: center;
+        transition: opacity 0.3s ease;
+    }
 
-/* Positioning for the 3 states */
-.side-circle.left {
-    left: -400px; /* Half hidden on the left */
-    transform: scale(0.7);
-    opacity: 0.4;
-    pointer-events: none; /* Only center circle should be interactive */
-}
+    .auth-message.error {
+        color: #FF4B4B;
+    }
 
-.side-circle.center {
-    left: 560px; /* Centered exactly: (1920 - 800) / 2 */
-    transform: scale(1);
-    opacity: 1;
-    z-index: 10;
-    box-shadow: 0px 0px 50px rgba(255, 75, 75, 0.5);
-}
+    .auth-message.success {
+        color: #4BFF91;
+    }
 
-.side-circle.right {
-    left: 1520px; /* Half hidden on the right: 1920 - 400 */
-    transform: scale(0.7);
-    opacity: 0.4;
-    pointer-events: none;
-}
+    /* ---------- Submit Button ---------- */
+    .auth-submit {
+        width: 100%;
+        padding: 16px;
+        border: none;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #FF4B4B 0%, #8B0000 100%);
+        color: #ffffff;
+        font-family: 'Minecraft', sans-serif;
+        font-size: 15px;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        box-shadow: 0 4px 20px rgba(255, 75, 75, 0.35);
+        margin-top: 4px;
+    }
 
-.circle-content {
-    font-family: 'Karantina', sans-serif;
-    font-size: 120px; /* Larger text for the 800px circles */
-    color: #fff;
-    text-transform: uppercase;
-}
+    .auth-submit:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 30px rgba(255, 75, 75, 0.55);
+        filter: brightness(1.15);
+    }
 
-/* Arrow Navigation */
-.slider-arrow {
-    position: absolute;
-    top: 50%;
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 3px solid #fff;
-    cursor: pointer;
-    z-index: 100;
-    transition: transform 0.3s ease, background 0.3s ease;
-}
+    .auth-submit:active {
+        transform: translateY(0px) scale(0.98);
+    }
 
-.slider-arrow:hover {
-    background: rgba(255, 75, 75, 0.3);
-    transform: translateY(-50%) rotate(45deg) scale(1.2);
-}
+    .auth-submit:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
 
-.left-arrow { 
-    left: 100px; 
-    transform: translateY(-50%) rotate(45deg);
-    border-right: none; 
-    border-top: none; 
-}
+    .logout-btn {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+        border: 1.5px solid rgba(255, 75, 75, 0.35);
+        box-shadow: none;
+        margin-top: 0;
+    }
 
-.right-arrow { 
-    right: 100px; 
-    transform: translateY(-50%) rotate(45deg);
-    border-left: none; 
-    border-bottom: none; 
-}
+    .logout-btn:hover {
+        background: rgba(255, 75, 75, 0.2);
+        border-color: rgba(255, 75, 75, 0.8);
+        box-shadow: 0 0 20px rgba(255, 75, 75, 0.3);
+    }
+
+    /* ---------- Account View ---------- */
+    #authAccount.hidden {
+        display: none;
+    }
+
+    #authGuest.hidden {
+        display: none;
+    }
+
+    .account-header {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        margin-bottom: 32px;
+    }
+
+    .account-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #FF4B4B, #8B0000);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Minecraft', sans-serif;
+        font-size: 36px;
+        color: #fff;
+        box-shadow: 0 0 28px rgba(255, 75, 75, 0.5);
+        flex-shrink: 0;
+        text-transform: uppercase;
+    }
+
+    .account-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .account-username {
+        font-family: 'Minecraft', sans-serif;
+        font-size: 28px;
+        color: #ffffff;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .account-role {
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: rgba(255, 75, 75, 0.7);
+        text-transform: uppercase;
+    }
+
+    .account-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 75, 75, 0.3), transparent);
+        margin: 16px 0;
+    }
+
+    .account-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 16px;
+    }
+
+    .stat-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .stat-label {
+        font-family: 'Minecraft', sans-serif;
+        font-size: 12px;
+        letter-spacing: 2px;
+        color: rgba(255, 255, 255, 0.35);
+    }
+
+    .stat-value {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    /* ============================================================
+       WORKOUT WIZARD UI
+       ============================================================ */
+    
+    /* Center text "WORKOUT" fades out when centered */
+    .side-circle .title-display {
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        position: absolute;
+    }
+    
+    .side-circle.center .title-display {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.8);
+    }
+    
+    /* The Wizard container */
+    .workout-wizard {
+        position: absolute;
+        width: 530px;
+        height: 530px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.6s ease;
+        z-index: 20;
+    }
+    
+    .side-circle.center .workout-wizard {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    #workoutGenerateForm {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    .wizard-step {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 40px;
+        box-sizing: border-box;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    
+    .wizard-step.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+        z-index: 10;
+    }
+    
+    .wizard-step h3 {
+        font-family: 'Minecraft', sans-serif;
+        color: #fff;
+        font-size: 22px;
+        margin-bottom: 16px;
+        text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    
+    /* Muscle Grid */
+    .muscle-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        width: 100%;
+        max-height: 310px;
+        overflow-y: auto;
+        padding: 4px;
+        /* Custom scrollbar for grid */
+    }
+    
+    .muscle-toggle {
+        cursor: pointer;
+        display: block;
+    }
+    
+    .muscle-toggle input {
+        display: none;
+    }
+    
+    .muscle-toggle span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        border-radius: 10px;
+        padding: 7px 4px;
+        color: #ddd;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 11px;
+        transition: all 0.2s ease;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    
+    .muscle-toggle input:checked + span {
+        background: rgba(255, 75, 75, 0.3);
+        border-color: #FF4B4B;
+        color: #fff;
+        box-shadow: 0 0 15px rgba(255, 75, 75, 0.4);
+        transform: scale(1.05);
+    }
+    
+    .muscle-toggle:hover span {
+        background: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Equipment Radios */
+    .equipment-radios {
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .eq-radio {
+        cursor: pointer;
+    }
+    
+    .eq-radio input {
+        display: none;
+    }
+    
+    .eq-btn {
+        padding: 12px 18px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        color: #ccc;
+        font-family: 'Minecraft', sans-serif;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+    
+    .eq-radio input:checked + .eq-btn {
+        background: rgba(255, 75, 75, 0.8);
+        border-color: #fff;
+        color: #fff;
+        box-shadow: 0 0 20px rgba(255, 75, 75, 0.6);
+        transform: scale(1.1);
+    }
+    
+    .custom-eq-panel {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        width: 80%;
+        margin-bottom: 20px;
+        opacity: 1;
+        max-height: 200px;
+        transition: all 0.4s ease;
+        overflow: hidden;
+    }
+    
+    .custom-eq-panel.hidden {
+        max-height: 0;
+        opacity: 0;
+        margin-bottom: 0;
+        border: none;
+    }
+    
+    /* Number Input */
+    .num-input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .glass-input {
+        background: rgba(0, 0, 0, 0.4);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        color: #fff;
+        font-family: 'Minecraft', sans-serif;
+        font-size: 48px;
+        width: 120px;
+        text-align: center;
+        padding: 10px;
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .glass-input:focus {
+        border-color: #FF4B4B;
+        box-shadow: 0 0 15px rgba(255, 75, 75, 0.5);
+    }
+    
+    /* Buttons */
+    .wizard-actions {
+        margin-top: 16px;
+        flex-shrink: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .wizard-actions.dual {
+        justify-content: space-between;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .wizard-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        padding: 10px 22px;
+        border-radius: 16px;
+        color: #fff;
+        font-family: 'Minecraft', sans-serif;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .wizard-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+    }
+    
+    .wizard-btn.forge {
+        background: linear-gradient(135deg, #FF4B4B 0%, #8B0000 100%);
+        border-color: #FF4B4B;
+        box-shadow: 0 0 20px rgba(255, 75, 75, 0.4);
+    }
+    
+    .wizard-btn.forge:hover {
+        box-shadow: 0 0 30px rgba(255, 75, 75, 0.8);
+        transform: scale(1.1);
+    }

@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANVIL - Generated Workout</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&display=swap" rel="stylesheet">
+</head>
+<body style="background: linear-gradient(135deg, #111, #000); display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; position: relative; overflow: hidden;">
+
+<div id="canvas" class="selection-canvas" style="width: 1920px; height: 1080px; position: relative;">
+    <!-- Logo -->
+    <div class="anvil-logo" onclick="window.location.href='/'">ANVIL</div>
+
+    <div class="main-display-card" style="display: flex; flex-direction: column; align-items: center; padding: 40px; box-sizing: border-box; overflow: hidden;">
+        <h1 id="pageTitle" style="font-family: 'Karantina', sans-serif; font-size: 80px; color: #fff; margin: 0 0 30px 0; letter-spacing: 2px;">YOUR PRESCRIBED WORKOUT</h1>
+        
+        <div id="GeneratedContainer" style="display: flex; flex-direction: column; width: 100%; overflow-y: auto; gap: 20px; flex: 1;">
+            <p style="color:white; font-family: 'Minecraft', sans-serif; font-size: 24px;">FORGING...</p>
+        </div>
+
+        <button onclick="window.location.href='/selection/'" class="wizard-btn" style="margin-top: 20px; flex-shrink: 0;">
+            &larr; BACK TO SELECTION
+        </button>
+    </div>
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const container = document.getElementById('GeneratedContainer');
+    const title = document.getElementById('pageTitle');
+    const token = localStorage.getItem('anvilAccess');
+    const username = localStorage.getItem('anvilUsername');
+
+    // Fetch exercises map first (always needed)
+    let exercisesMap = {};
+    try {
+        const res = await fetch('/exercise/');
+        const exercises = await res.json();
+        exercises.forEach(ex => { exercisesMap[ex.id] = ex; });
+    } catch(err) {
+        container.innerHTML = "<p style=\"color:red; font-family:'Minecraft';\">FAILED TO LOAD EXERCISE DB.</p>";
+        return;
+    }
+
+    // --- LOGGED IN: show all saved user workouts ---
+    if (token && username) {
+        title.textContent = username.toUpperCase() + "'S FORGE HISTORY";
+        try {
+            const res = await authFetch('/workout/');
+
+            if (res.status === 401) {
+                // Token expired and couldn't refresh — clear auth, show guest view
+                localStorage.removeItem('anvilAccess');
+                localStorage.removeItem('anvilRefresh');
+                localStorage.removeItem('anvilUsername');
+                title.textContent = 'YOUR PRESCRIBED WORKOUT';
+                // Fall through to guest logic below
+            } else {
+                const workouts = await res.json();
+                const userWorkouts = workouts.filter(w => !w.is_premade);
+
+                if (userWorkouts.length === 0) {
+                    container.innerHTML = "<p style=\"color:#aaa; font-family:'Minecraft'; text-align:center; font-size:20px;\">NO WORKOUTS FORGED YET.<br><br>Head to the selection page to generate your first workout.</p>";
+                    return;
+                }
+
+                container.innerHTML = userWorkouts.map(w => createCard(w, 'workout', exercisesMap)).join('');
+                return;
+            }
+        } catch(err) {
+            console.error(err);
+            container.innerHTML = "<p style=\"color:red;\">FAILED TO LOAD YOUR WORKOUTS.</p>";
+            return;
+        }
+    }
+
+    // --- GUEST: show the last generated workout from session ---
+    const stored = sessionStorage.getItem('tempGeneratedWorkout');
+    
+    if (!stored) {
+        container.innerHTML = "<p style=\"color:red; font-family:'Minecraft'; text-align:center;\">NO WORKOUT DATA FOUND.<br><br>Please return to the selection page to forge a new workout.</p>";
+        return;
+    }
+    
+    let generatedWorkout;
+    try {
+        generatedWorkout = JSON.parse(stored);
+    } catch(e) {
+        container.innerHTML = "<p style=\"color:red;\">Corrupted data. Please regenerate.</p>";
+        return;
+    }
+    
+    if (generatedWorkout.error) {
+        container.innerHTML = `<p style="color:red;">Error: ${generatedWorkout.error}</p>`;
+        return;
+    }
+    
+    container.innerHTML = createCard(generatedWorkout, 'workout', exercisesMap);
+});
+</script>
+</body>
+</html>

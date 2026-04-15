@@ -14,15 +14,88 @@
     <div class="anvil-logo" onclick="window.location.href='/'">ANVIL</div>
 
     <div class="slider-wrapper">
-        <div class="side-circle left" id="circleLeft">
+        <div class="side-circle left circle-diet" id="circleLeft">
             <div class="circle-content">DIET</div>
         </div>
 
         <div class="side-circle center" id="circleCenter">
-            <div class="circle-content">WORKOUT</div>
+            <div class="circle-content title-display">WORKOUT</div>
+            
+            <div class="workout-wizard hidden-wizard">
+                <form id="workoutGenerateForm">
+                    <!-- STEP 1: MUSCLE GROUPS -->
+                    <div class="wizard-step active" id="step1">
+                        <h3>SELECT MUSCLE GROUPS</h3>
+                        <div class="muscle-grid">
+                            <!-- Muscles injected via JS or hardcoded -->
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="biceps"><span>Biceps</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="calves"><span>Calves</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="chest"><span>Chest</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="forearms"><span>Forearms</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="front delt"><span>Front Delt</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="hamstrings"><span>Hamstrings</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="lats"><span>Lats</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="lower abs"><span>Lower Abs</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="lower back"><span>Lower Back</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="quads"><span>Quads</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="rear delt"><span>Rear Delt</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="side delt"><span>Side Delt</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="triceps"><span>Triceps</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="upper abs"><span>Upper Abs</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="muscles" value="upper back"><span>Upper Back</span></label>
+                        </div>
+                        <div class="wizard-actions">
+                            <button type="button" class="wizard-btn next" onclick="goToStep(2)">NEXT &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: EQUIPMENT -->
+                    <div class="wizard-step" id="step2" style="display: none;">
+                        <h3>EQUIPMENT AVAILABLE</h3>
+                        <div class="equipment-radios">
+                            <label class="eq-radio">
+                                <input type="radio" name="eq_type" value="gym" checked onchange="toggleCustomEq()">
+                                <div class="eq-btn">GYM (ALL)</div>
+                            </label>
+                            <label class="eq-radio">
+                                <input type="radio" name="eq_type" value="none" onchange="toggleCustomEq()">
+                                <div class="eq-btn">BODYWEIGHT</div>
+                            </label>
+                            <label class="eq-radio">
+                                <input type="radio" name="eq_type" value="custom" onchange="toggleCustomEq()">
+                                <div class="eq-btn">CUSTOM</div>
+                            </label>
+                        </div>
+                        <div id="customEquipmentPanel" class="custom-eq-panel hidden">
+                            <label class="muscle-toggle"><input type="checkbox" name="equipment" value="bar"><span>Bar</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="equipment" value="barbell"><span>Barbell</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="equipment" value="cable"><span>Cable</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="equipment" value="dumbbell"><span>Dumbbell</span></label>
+                            <label class="muscle-toggle"><input type="checkbox" name="equipment" value="machine"><span>Machine</span></label>
+                        </div>
+                        <div class="wizard-actions dual">
+                            <button type="button" class="wizard-btn back" onclick="goToStep(1)">&larr; BACK</button>
+                            <button type="button" class="wizard-btn next" onclick="goToStep(3)">NEXT &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: EXERCISES & FORGE -->
+                    <div class="wizard-step" id="step3" style="display: none;">
+                        <h3>NUMBER OF EXERCISES</h3>
+                        <div class="num-input-container">
+                            <input type="number" id="numExercises" value="5" min="1" max="20" class="glass-input">
+                        </div>
+                        <div id="wizardMsg" class="auth-message"></div>
+                        <div class="wizard-actions dual">
+                            <button type="button" class="wizard-btn back" onclick="goToStep(2)">&larr; BACK</button>
+                            <button type="button" class="wizard-btn forge" onclick="handleForgeWorkout()"><img src="{% static 'images/anvil.png' %}" alt="Forge" style="height:20px; vertical-align:middle; margin-right:8px; display:none;" onerror="this.style.display='none'"> FORGE WORKOUT</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <div class="side-circle right" id="circleRight">
+        <div class="side-circle right circle-goals" id="circleRight">
             <div class="circle-content">GOALS</div>
         </div>
     </div>

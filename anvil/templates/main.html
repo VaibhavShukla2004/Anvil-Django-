@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ANVIL - Precision fitness training. Log in or register to track your workouts, or generate a workout as a guest.">
     <title>ANVIL - Precision Alignment</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Karantina:wght@700&family=VT323&display=swap" rel="stylesheet">
@@ -46,12 +47,108 @@
 </div>
     <div class="pookie-text">BE READY TO ACHIEVE SOMETHING, POOKIE.</div>
 
-    <div class="side-text">blahblah<br>bolha<br>blkoha<br>blah</div>
+    <!-- ========== AUTH PANEL ========== -->
+    <div class="auth-panel" id="authPanel">
+
+        <!-- GUEST STATE: Login / Register tabs -->
+        <div id="authGuest">
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">LOGIN</button>
+                <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">REGISTER</button>
+            </div>
+
+            <!-- Login Form -->
+            <form class="auth-form" id="formLogin" onsubmit="handleLogin(event)">
+                <div class="auth-field">
+                    <label>USERNAME</label>
+                    <input type="text" id="loginUsername" placeholder="Your username" autocomplete="username" required>
+                </div>
+                <div class="auth-field">
+                    <label>PASSWORD</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" required>
+                </div>
+                <div class="forgot-pwd-link" onclick="showForgotPwd()">Forgot Password?</div>
+                <div class="auth-message" id="loginMsg"></div>
+                <button type="submit" class="auth-submit" id="loginSubmitBtn">ENTER THE FORGE</button>
+            </form>
+
+            <!-- Register Form -->
+            <form class="auth-form hidden" id="formRegister" onsubmit="handleRegister(event)">
+                <div class="auth-field">
+                    <label>USERNAME</label>
+                    <input type="text" id="regUsername" placeholder="Choose a username" autocomplete="username" required>
+                </div>
+                <div class="auth-field">
+                    <label>EMAIL</label>
+                    <input type="email" id="regEmail" placeholder="your@email.com" autocomplete="email" required>
+                </div>
+                <div class="auth-field">
+                    <label>PASSWORD</label>
+                    <input type="password" id="regPassword" placeholder="••••••••" autocomplete="new-password" required>
+                </div>
+                <div class="auth-field">
+                    <label>CONFIRM PASSWORD</label>
+                    <input type="password" id="regPassword2" placeholder="••••••••" autocomplete="new-password" required>
+                </div>
+                <div class="auth-message" id="registerMsg"></div>
+                <button type="submit" class="auth-submit" id="registerSubmitBtn">JOIN THE FORGE</button>
+            </form>
+
+            <!-- Forgot Password Form -->
+            <form class="auth-form hidden" id="formForgotPwd" onsubmit="handleForgotPwd(event)">
+                <div class="auth-field">
+                    <label>USERNAME</label>
+                    <input type="text" id="forgotUsername" placeholder="Your username" required>
+                </div>
+                <div class="auth-field">
+                    <label>EMAIL</label>
+                    <input type="email" id="forgotEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="auth-field">
+                    <label>NEW PASSWORD</label>
+                    <input type="password" id="forgotNewPassword" placeholder="••••••••" required>
+                </div>
+                <div class="auth-message" id="forgotMsg"></div>
+                <button type="submit" class="auth-submit" id="forgotSubmitBtn">RESET PASSWORD</button>
+                <div class="forgot-pwd-link" style="text-align: center; margin-top: 5px;" onclick="switchAuthTab('login')">Back to Login</div>
+            </form>
+        </div>
+
+        <!-- LOGGED IN STATE: Account details -->
+        <div id="authAccount" class="hidden">
+            <div class="account-header">
+                <div class="account-avatar" id="accountAvatar">A</div>
+                <div class="account-info">
+                    <div class="account-username" id="accountUsername">USERNAME</div>
+                    <div class="account-role">FORGE MEMBER</div>
+                </div>
+            </div>
+            <div class="account-divider"></div>
+            <div class="account-stats">
+                <div class="stat-item">
+                    <span class="stat-label">STATUS</span>
+                    <span class="stat-value" style="color: #4BFF91;">● ACTIVE</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">MEMBER SINCE</span>
+                    <span class="stat-value" id="accountSince">—</span>
+                </div>
+            </div>
+            <div class="account-divider"></div>
+            <div class="auth-message" id="accountMsg"></div>
+            <button class="auth-submit logout-btn" onclick="handleLogout()">LEAVE THE FORGE</button>
+        </div>
+
+    </div>
     
 </div>
 
 <div class="bottom-content">
-    Scroll down for more workout details...
+    <div class="meet-devs-text">
+        MEET THE DEVS
+        <span>BEHIND THE SCENES</span>
+    </div>
+    <img src="{% static 'images/humans_badge.png' %}" alt="Tested and Maintained by Humans" class="bottom-badge-img">
 </div>
 
 

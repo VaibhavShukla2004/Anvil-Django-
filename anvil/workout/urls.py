@@ -25,4 +25,5 @@ urlpatterns = [
     path('premade/delete/', views.delete_premade_workouts),
 
     path('workouts_page/', views.workouts_page, name='page'),
+    path('generated/', views.generated_page, name='generated'),
 ]

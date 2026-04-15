@@ -1,301 +1,453 @@
 [
   {
     "name": "Barbell Bench Press",
-    "primary_muscles": ["chest"],
-    "muscle_weights": {"chest": 1.0, "triceps": 0.4, "front delt": 0.3},
-    "equipment": ["barbell"],
+    "primary_muscles": [
+      "chest"
+    ],
+    "muscle_weights": {
+      "chest": 1.0,
+      "triceps": 0.4,
+      "front delt": 0.3
+    },
+    "equipment": [
+      "barbell"
+    ],
     "type": "compound",
     "pattern": "push",
     "fatigue": 0.8,
     "difficulty": "intermediate",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/14598861/pexels-photo-14598861.jpeg"
   },
   {
     "name": "Incline Dumbbell Press",
-    "primary_muscles": ["chest"],
-    "muscle_weights": {"chest": 0.9, "front delt": 0.5, "triceps": 0.3},
-    "equipment": ["dumbbell"],
+    "primary_muscles": [
+      "chest"
+    ],
+    "muscle_weights": {
+      "chest": 0.9,
+      "front delt": 0.5,
+      "triceps": 0.3
+    },
+    "equipment": [
+      "dumbbell"
+    ],
     "type": "compound",
     "pattern": "push",
     "fatigue": 0.7,
     "difficulty": "intermediate",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/29526383/pexels-photo-29526383.jpeg"
   },
   {
     "name": "Cable Fly",
-    "primary_muscles": ["chest"],
-    "muscle_weights": {"chest": 1.0},
-    "equipment": ["cable"],
+    "primary_muscles": [
+      "chest"
+    ],
+    "muscle_weights": {
+      "chest": 1.0
+    },
+    "equipment": [
+      "cable"
+    ],
     "type": "isolation",
     "pattern": "push",
     "fatigue": 0.4,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/5327505/pexels-photo-5327505.jpeg"
   },
-
   {
     "name": "Overhead Shoulder Press",
-    "primary_muscles": ["front delt"],
-    "muscle_weights": {"front delt": 1.0, "triceps": 0.5},
-    "equipment": ["barbell"],
+    "primary_muscles": [
+      "front delt"
+    ],
+    "muscle_weights": {
+      "front delt": 1.0,
+      "triceps": 0.5
+    },
+    "equipment": [
+      "barbell"
+    ],
     "type": "compound",
     "pattern": "push",
     "fatigue": 0.8,
     "difficulty": "intermediate",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/7289370/pexels-photo-7289370.jpeg"
   },
   {
     "name": "Front Raise",
-    "primary_muscles": ["front delt"],
-    "muscle_weights": {"front delt": 1.0},
-    "equipment": ["dumbbell"],
+    "primary_muscles": [
+      "front delt"
+    ],
+    "muscle_weights": {
+      "front delt": 1.0
+    },
+    "equipment": [
+      "dumbbell"
+    ],
     "type": "isolation",
     "pattern": "push",
     "fatigue": 0.4,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/29793977/pexels-photo-29793977.jpeg"
   },
-
   {
     "name": "Lateral Raise",
-    "primary_muscles": ["side delt"],
-    "muscle_weights": {"side delt": 1.0},
-    "equipment": ["dumbbell"],
+    "primary_muscles": [
+      "side delt"
+    ],
+    "muscle_weights": {
+      "side delt": 1.0
+    },
+    "equipment": [
+      "dumbbell"
+    ],
     "type": "isolation",
     "pattern": "push",
     "fatigue": 0.4,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/5327460/pexels-photo-5327460.jpeg"
   },
   {
     "name": "Cable Lateral Raise",
-    "primary_muscles": ["side delt"],
-    "muscle_weights": {"side delt": 1.0},
-    "equipment": ["cable"],
+    "primary_muscles": [
+      "side delt"
+    ],
+    "muscle_weights": {
+      "side delt": 1.0
+    },
+    "equipment": [
+      "cable"
+    ],
     "type": "isolation",
     "pattern": "push",
     "fatigue": 0.4,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/4047025/pexels-photo-4047025.jpeg"
   },
-
   {
     "name": "Face Pull",
-    "primary_muscles": ["rear delt"],
-    "muscle_weights": {"rear delt": 1.0, "upper back": 0.5},
-    "equipment": ["cable"],
+    "primary_muscles": [
+      "rear delt"
+    ],
+    "muscle_weights": {
+      "rear delt": 1.0,
+      "upper back": 0.5
+    },
+    "equipment": [
+      "cable"
+    ],
     "type": "isolation",
     "pattern": "pull",
     "fatigue": 0.5,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/13965342/pexels-photo-13965342.jpeg"
   },
   {
     "name": "Reverse Pec Deck",
-    "primary_muscles": ["rear delt"],
-    "muscle_weights": {"rear delt": 1.0},
-    "equipment": ["machine"],
+    "primary_muscles": [
+      "rear delt"
+    ],
+    "muscle_weights": {
+      "rear delt": 1.0
+    },
+    "equipment": [
+      "machine"
+    ],
     "type": "isolation",
     "pattern": "pull",
     "fatigue": 0.4,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/13562693/pexels-photo-13562693.jpeg"
   },
-
   {
     "name": "Pull Up",
-    "primary_muscles": ["lats"],
-    "muscle_weights": {"lats": 1.0, "biceps": 0.5},
-    "equipment": ["bar"],
+    "primary_muscles": [
+      "lats"
+    ],
+    "muscle_weights": {
+      "lats": 1.0,
+      "biceps": 0.5
+    },
+    "equipment": [
+      "bar"
+    ],
     "type": "compound",
     "pattern": "pull",
     "fatigue": 0.8,
     "difficulty": "intermediate",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/4803672/pexels-photo-4803672.jpeg"
   },
   {
     "name": "Lat Pulldown",
-    "primary_muscles": ["lats"],
-    "muscle_weights": {"lats": 1.0, "biceps": 0.4},
-    "equipment": ["machine"],
+    "primary_muscles": [
+      "lats"
+    ],
+    "muscle_weights": {
+      "lats": 1.0,
+      "biceps": 0.4
+    },
+    "equipment": [
+      "machine"
+    ],
     "type": "compound",
     "pattern": "pull",
     "fatigue": 0.7,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/30165244/pexels-photo-30165244.jpeg"
   },
-
   {
     "name": "Barbell Row",
-    "primary_muscles": ["upper back"],
-    "muscle_weights": {"upper back": 1.0, "lats": 0.5},
-    "equipment": ["barbell"],
+    "primary_muscles": [
+      "upper back"
+    ],
+    "muscle_weights": {
+      "upper back": 1.0,
+      "lats": 0.5
+    },
+    "equipment": [
+      "barbell"
+    ],
     "type": "compound",
     "pattern": "pull",
     "fatigue": 0.8,
     "difficulty": "intermediate",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/5837267/pexels-photo-5837267.jpeg"
   },
   {
     "name": "Seated Cable Row",
-    "primary_muscles": ["upper back"],
-    "muscle_weights": {"upper back": 1.0, "lats": 0.5},
-    "equipment": ["cable"],
+    "primary_muscles": [
+      "upper back"
+    ],
+    "muscle_weights": {
+      "upper back": 1.0,
+      "lats": 0.5
+    },
+    "equipment": [
+      "cable"
+    ],
     "type": "compound",
     "pattern": "pull",
     "fatigue": 0.7,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/6389080/pexels-photo-6389080.jpeg"
   },
-
   {
     "name": "Barbell Curl",
-    "primary_muscles": ["biceps"],
-    "muscle_weights": {"biceps": 1.0},
-    "equipment": ["barbell"],
+    "primary_muscles": [
+      "biceps"
+    ],
+    "muscle_weights": {
+      "biceps": 1.0
+    },
+    "equipment": [
+      "barbell"
+    ],
     "type": "isolation",
     "pattern": "pull",
     "fatigue": 0.5,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/5327467/pexels-photo-5327467.jpeg"
   },
   {
     "name": "Hammer Curl",
-    "primary_muscles": ["biceps"],
-    "muscle_weights": {"biceps": 0.7, "forearms": 0.5},
-    "equipment": ["dumbbell"],
+    "primary_muscles": [
+      "biceps"
+    ],
+    "muscle_weights": {
+      "biceps": 0.7,
+      "forearms": 0.5
+    },
+    "equipment": [
+      "dumbbell"
+    ],
     "type": "isolation",
     "pattern": "pull",
     "fatigue": 0.5,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/6388989/pexels-photo-6388989.jpeg"
   },
-
   {
     "name": "Tricep Pushdown",
-    "primary_muscles": ["triceps"],
-    "muscle_weights": {"triceps": 1.0},
-    "equipment": ["cable"],
+    "primary_muscles": [
+      "triceps"
+    ],
+    "muscle_weights": {
+      "triceps": 1.0
+    },
+    "equipment": [
+      "cable"
+    ],
     "type": "isolation",
     "pattern": "push",
     "fatigue": 0.4,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/30672398/pexels-photo-30672398.jpeg"
   },
   {
     "name": "Skull Crushers",
-    "primary_muscles": ["triceps"],
-    "muscle_weights": {"triceps": 1.0},
-    "equipment": ["barbell"],
+    "primary_muscles": [
+      "triceps"
+    ],
+    "muscle_weights": {
+      "triceps": 1.0
+    },
+    "equipment": [
+      "barbell"
+    ],
     "type": "isolation",
     "pattern": "push",
     "fatigue": 0.6,
     "difficulty": "intermediate",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/3838698/pexels-photo-3838698.jpeg"
   },
-
   {
     "name": "Wrist Curl",
-    "primary_muscles": ["forearms"],
-    "muscle_weights": {"forearms": 1.0},
-    "equipment": ["barbell"],
+    "primary_muscles": [
+      "forearms"
+    ],
+    "muscle_weights": {
+      "forearms": 1.0
+    },
+    "equipment": [
+      "barbell"
+    ],
     "type": "isolation",
     "pattern": "pull",
     "fatigue": 0.3,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/6550874/pexels-photo-6550874.jpeg"
   },
-
   {
     "name": "Crunch",
-    "primary_muscles": ["upper abs"],
-    "muscle_weights": {"upper abs": 1.0},
+    "primary_muscles": [
+      "upper abs"
+    ],
+    "muscle_weights": {
+      "upper abs": 1.0
+    },
     "equipment": [],
     "type": "isolation",
     "pattern": "core",
     "fatigue": 0.3,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/4971061/pexels-photo-4971061.jpeg"
   },
   {
     "name": "Leg Raise",
-    "primary_muscles": ["lower abs"],
-    "muscle_weights": {"lower abs": 1.0},
+    "primary_muscles": [
+      "lower abs"
+    ],
+    "muscle_weights": {
+      "lower abs": 1.0
+    },
     "equipment": [],
     "type": "isolation",
     "pattern": "core",
     "fatigue": 0.4,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/30500788/pexels-photo-30500788.jpeg"
   },
-
   {
     "name": "Squat",
-    "primary_muscles": ["quads"],
-    "muscle_weights": {"quads": 1.0, "glutes": 0.6},
-    "equipment": ["barbell"],
+    "primary_muscles": [
+      "quads"
+    ],
+    "muscle_weights": {
+      "quads": 1.0,
+      "glutes": 0.6
+    },
+    "equipment": [
+      "barbell"
+    ],
     "type": "compound",
     "pattern": "squat",
     "fatigue": 0.9,
     "difficulty": "intermediate",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/8032893/pexels-photo-8032893.jpeg"
   },
   {
     "name": "Leg Press",
-    "primary_muscles": ["quads"],
-    "muscle_weights": {"quads": 1.0},
-    "equipment": ["machine"],
+    "primary_muscles": [
+      "quads"
+    ],
+    "muscle_weights": {
+      "quads": 1.0
+    },
+    "equipment": [
+      "machine"
+    ],
     "type": "compound",
     "pattern": "squat",
     "fatigue": 0.8,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/136404/pexels-photo-136404.jpeg"
   },
-
   {
     "name": "Romanian Deadlift",
-    "primary_muscles": ["hamstrings"],
-    "muscle_weights": {"hamstrings": 1.0, "lower back": 0.5},
-    "equipment": ["barbell"],
+    "primary_muscles": [
+      "hamstrings"
+    ],
+    "muscle_weights": {
+      "hamstrings": 1.0,
+      "lower back": 0.5
+    },
+    "equipment": [
+      "barbell"
+    ],
     "type": "compound",
     "pattern": "hinge",
     "fatigue": 0.8,
     "difficulty": "intermediate",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/9602283/pexels-photo-9602283.jpeg"
   },
   {
     "name": "Leg Curl",
-    "primary_muscles": ["hamstrings"],
-    "muscle_weights": {"hamstrings": 1.0},
-    "equipment": ["machine"],
+    "primary_muscles": [
+      "hamstrings"
+    ],
+    "muscle_weights": {
+      "hamstrings": 1.0
+    },
+    "equipment": [
+      "machine"
+    ],
     "type": "isolation",
     "pattern": "hinge",
     "fatigue": 0.5,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/28731788/pexels-photo-28731788.jpeg"
   },
-
   {
     "name": "Calf Raise",
-    "primary_muscles": ["calves"],
-    "muscle_weights": {"calves": 1.0},
-    "equipment": ["machine"],
+    "primary_muscles": [
+      "calves"
+    ],
+    "muscle_weights": {
+      "calves": 1.0
+    },
+    "equipment": [
+      "machine"
+    ],
     "type": "isolation",
     "pattern": "push",
     "fatigue": 0.4,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/8187687/pexels-photo-8187687.jpeg"
   },
-
   {
     "name": "Back Extension",
-    "primary_muscles": ["lower back"],
-    "muscle_weights": {"lower back": 1.0},
-    "equipment": ["bodyweight"],
+    "primary_muscles": [
+      "lower back"
+    ],
+    "muscle_weights": {
+      "lower back": 1.0
+    },
+    "equipment": [
+      "bodyweight"
+    ],
     "type": "isolation",
     "pattern": "hinge",
     "fatigue": 0.5,
     "difficulty": "beginner",
-    "image_url": ""
+    "image_url": "https://images.pexels.com/photos/6443472/pexels-photo-6443472.jpeg"
   }
 ]
